@@ -11,4 +11,9 @@ describe ('Airport', function() {
     airport.land(plane)
     expect(airport.hangar).toContain(plane);
   })
+
+  it('lets a plane take off', function() {
+    airport.takeoff(plane)
+    expect(airport.hangar).not.toContain(plane)
+  })
 })
