@@ -12,6 +12,11 @@ describe ('Airport', function() {
       airport.land(plane1)
       expect(airport.hangar).toContain(plane1);
     });
+
+    it("prevents landing if stormy", function() {
+      spyOn (airport, 'isstormy').and.returnValue(true);
+      expect(function() {airport.land(plane1);}).toThrow('No landing while stormy')
+    });
   });
 
   describe('#takeoff', function() {
