@@ -51,4 +51,11 @@ describe ('Airport', function() {
       expect(airport.isfull()).toBe(true)
     });
   });
+
+  describe('default capacity', function() {
+    it('can override default', function() {
+      airport.changeCapacity(30)
+      expect(airport.capacity()).toEqual(30)
+    });
+  });
 });

@@ -29,3 +29,11 @@ Airport.prototype.isstormy = function() {
 Airport.prototype.isfull = function() {
   return this.hangar.length === this.AIRPORT_CAPACITY;
 }
+
+Airport.prototype.capacity = function() {
+  return this.AIRPORT_CAPACITY;
+}
+
+Airport.prototype.changeCapacity = function(number) {
+  return this.AIRPORT_CAPACITY = number;
+}
