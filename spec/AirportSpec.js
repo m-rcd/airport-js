@@ -1,10 +1,9 @@
 describe ('Airport', function() {
   var airport;
-  var plane;
+  var plane = 'plane';
 
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
   });
 
   it("lands a plane", function() {
@@ -13,6 +12,7 @@ describe ('Airport', function() {
   })
 
   it('lets a plane take off', function() {
+    airport.land(plane)
     airport.takeoff(plane)
     expect(airport.hangar).not.toContain(plane)
   })
