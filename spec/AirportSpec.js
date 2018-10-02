@@ -7,15 +7,25 @@ describe ('Airport', function() {
     airport = new Airport();
   });
 
-  it("lands a plane", function() {
-    airport.land(plane1)
-    expect(airport.hangar).toContain(plane1);
-  })
+  describe('#land', function() {
+    it("lands a plane", function() {
+      airport.land(plane1)
+      expect(airport.hangar).toContain(plane1);
+    });
+  });
 
-  it('lets a plane take off', function() {
-    airport.land(plane1)
-    airport.land(plane2)
-    airport.takeoff(plane2)
-    expect(airport.hangar).not.toContain(plane2)
-  })
-})
+  describe('#takeoff', function() {
+    it('lets a plane take off', function() {
+      airport.land(plane1)
+      airport.land(plane2)
+      airport.takeoff(plane2)
+      expect(airport.hangar).not.toContain(plane2)
+    });
+
+    it('prevents take off if stormy', function() {
+      airport.land(plane1)
+      spyOn (airport, 'isstormy').and.returnValue(true);
+      expect(function() {airport.takeoff(plane1);}).toThrow('No take off while stormy');
+    });
+  });
+});

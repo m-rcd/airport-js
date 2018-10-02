@@ -8,5 +8,13 @@ Airport.prototype.land = function(plane) {
 
 Airport.prototype.takeoff = function(plane) {
   var index = this.hangar.indexOf(plane);
-  this.hangar.splice(index, 1);
+  if (this.isstormy()) {
+    throw 'No take off while stormy';
+  };
+    this.hangar.splice(index, 1);
+}
+
+Airport.prototype.isstormy = function() {
+  var weather = new Weather()
+  weather.stormy()
 }
