@@ -1,11 +1,15 @@
 function Airport () {
   this.hangar = [];
+  this.AIRPORT_CAPACITY = 20;
 }
 
 Airport.prototype.land = function(plane) {
   if (this.isstormy()) {
     throw 'No landing while stormy';
   };
+  if (this.isfull()) {
+    throw 'Airport is full!'
+  }
   this.hangar.push(plane)
 }
 
@@ -21,3 +25,7 @@ Airport.prototype.isstormy = function() {
   var weather = new Weather();
   weather.stormy()
 };
+
+Airport.prototype.isfull = function() {
+  return this.hangar.length === this.AIRPORT_CAPACITY;
+}

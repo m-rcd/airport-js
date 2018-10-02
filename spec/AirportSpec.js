@@ -17,6 +17,14 @@ describe ('Airport', function() {
       spyOn (airport, 'isstormy').and.returnValue(true);
       expect(function() {airport.land(plane1);}).toThrow('No landing while stormy')
     });
+
+    it('prevents landing if airport full', function() {
+      for (var i = 0; i < 20; i++) {
+        var plane = 'plane'
+        airport.land(plane)
+      }
+      expect(function() {airport.land(plane1);}).toThrow('Airport is full!')
+    })
   });
 
   describe('#takeoff', function() {
@@ -31,6 +39,16 @@ describe ('Airport', function() {
       airport.land(plane1)
       spyOn (airport, 'isstormy').and.returnValue(true);
       expect(function() {airport.takeoff(plane1);}).toThrow('No take off while stormy');
+    });
+  });
+
+  describe('#full', function() {
+    it('returns true if airport is full', function() {
+      for (var i = 0; i < 20; i++) {
+        var plane = 'plane'
+        airport.land(plane)
+      }
+      expect(airport.isfull()).toBe(true)
     });
   });
 });
