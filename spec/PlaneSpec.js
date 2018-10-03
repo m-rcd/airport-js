@@ -12,7 +12,15 @@ describe('Plane', function() {
       plane.board(passenger1)
       expect(plane.onBoard).toContain(passenger1)
     });
+
+    it('prevents passenger boarding if plane is full', function() {
+      for (var i = 0; i < 100; i++) {
+        var passenger = 'passenger'
+        plane.board(passenger)
+    }
+    expect(function() {plane.board(passenger1);}).toThrow('Plane is full!')
   });
+});
 
   describe('#disembark', function() {
     it('lets passengers disembark', function() {
@@ -27,8 +35,8 @@ describe('Plane', function() {
     it('can change plane capacity', function() {
       plane.changePlaneCapacity(110)
       expect(plane.planeCapacity).toEqual(110)
-    })
-  })
+    });
+  });
 
   describe('full', function() {
     it('returns true if plane is full', function() {
@@ -37,6 +45,6 @@ describe('Plane', function() {
         plane.board(passenger)
       }
       expect(plane.isfull()).toBe(true)
-    })
-  })
+    });
+  });
 });

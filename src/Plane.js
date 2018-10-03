@@ -4,7 +4,11 @@ function Plane() {
 };
 
 Plane.prototype.board = function(passenger) {
+  if (this.isfull()) {
+    throw 'Plane is full!'
+  }
   this.onBoard.push(passenger)
+  
 };
 
 Plane.prototype.disembark = function(passenger) {
