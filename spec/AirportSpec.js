@@ -55,6 +55,14 @@ describe ('Airport', function() {
       }
       expect(airport.isfull()).toBe(true)
     });
+
+    it('returns false if aiport is not full', function() {
+      for (var i = 0; i < 18; i++) {
+        var plane = new Plane()
+        airport.land(plane)
+      }
+      expect(airport.isfull()).toBe(false)
+    })
   });
 
   describe('default capacity', function() {
