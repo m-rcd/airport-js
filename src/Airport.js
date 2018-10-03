@@ -4,6 +4,9 @@ function Airport () {
 }
 
 Airport.prototype.land = function(plane) {
+  if (this.planeInHangar(plane)) {
+    throw 'Plane already landed!'
+  }
   if (this.isstormy()) {
     throw 'No landing while stormy';
   };
@@ -36,4 +39,8 @@ Airport.prototype.capacity = function() {
 
 Airport.prototype.changeCapacity = function(number) {
   return this.AIRPORT_CAPACITY = number;
+}
+
+Airport.prototype.planeInHangar = function(plane) {
+  return this.hangar.includes(plane)
 }

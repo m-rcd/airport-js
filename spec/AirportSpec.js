@@ -1,7 +1,7 @@
 describe ('Airport', function() {
   var airport;
-  var plane1 = 'plane1';
-  var plane2 = 'plane2';
+  var plane1 = 'plane 1';
+  var plane2 = 'plane 2';
 
   beforeEach(function() {
     airport = new Airport();
@@ -20,10 +20,15 @@ describe ('Airport', function() {
 
     it('prevents landing if airport full', function() {
       for (var i = 0; i < 20; i++) {
-        var plane = 'plane'
+        var plane = new Plane()
         airport.land(plane)
       }
       expect(function() {airport.land(plane1);}).toThrow('Airport is full!')
+    })
+
+    it('throws an error if plane already landed', function() {
+      airport.land(plane1)
+      expect(function() {airport.land(plane1);}).toThrow('Plane already landed!')
     })
   });
 
@@ -45,7 +50,7 @@ describe ('Airport', function() {
   describe('#full', function() {
     it('returns true if airport is full', function() {
       for (var i = 0; i < 20; i++) {
-        var plane = 'plane'
+        var plane = new Plane()
         airport.land(plane)
       }
       expect(airport.isfull()).toBe(true)

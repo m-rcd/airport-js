@@ -8,7 +8,7 @@ Plane.prototype.board = function(passenger) {
     throw 'Plane is full!'
   }
   this.onBoard.push(passenger)
-  
+
 };
 
 Plane.prototype.disembark = function(passenger) {
