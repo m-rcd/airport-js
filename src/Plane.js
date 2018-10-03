@@ -15,3 +15,7 @@ Plane.prototype.disembark = function(passenger) {
 Plane.prototype.changePlaneCapacity = function(newCapacity) {
   this.planeCapacity = newCapacity
 }
+
+Plane.prototype.isfull = function() {
+  return this.onBoard.length === this.planeCapacity
+}

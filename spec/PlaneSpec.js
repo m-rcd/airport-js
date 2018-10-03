@@ -29,4 +29,14 @@ describe('Plane', function() {
       expect(plane.planeCapacity).toEqual(110)
     })
   })
+
+  describe('full', function() {
+    it('returns true if plane is full', function() {
+      for (var i = 0; i < 100; i++) {
+        var passenger = 'passenger'
+        plane.board(passenger)
+      }
+      expect(plane.isfull()).toBe(true)
+    })
+  })
 });
