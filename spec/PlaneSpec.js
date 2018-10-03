@@ -20,6 +20,13 @@ describe('Plane', function() {
       plane.board(passenger2)
       plane.disembark(passenger1)
       expect(plane.onBoard).not.toContain(passenger1)
+    });
+  });
+
+  describe('plane capacity', function() {
+    it('can change plane capacity', function() {
+      plane.changePlaneCapacity(110)
+      expect(plane.planeCapacity).toEqual(110)
     })
   })
 });
